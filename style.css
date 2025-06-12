@@ -282,3 +282,60 @@ header {
     margin: 14px auto;
   }
 }
+/* Hamburger (三) menu styles */
+#hamburger {
+  display: none;
+  position: fixed;
+  top: 14px;
+  left: 16px;
+  z-index: 2001;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 42px;
+  height: 42px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+#hamburger span {
+  display: block;
+  width: 28px;
+  height: 4px;
+  background: var(--text);
+  border-radius: 3px;
+  transition: 0.3s;
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 768px) {
+  #hamburger {
+    display: flex;
+  }
+  .sidebar {
+    position: fixed;
+    top: 54px;
+    left: -300px;
+    width: 220px;
+    height: 100vh;
+    background: var(--bg-sidebar);
+    flex-direction: column;
+    padding-top: 30px;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.05);
+    transition: left 0.3s;
+    z-index: 2000;
+  }
+  .sidebar.open {
+    left: 0;
+  }
+  /* Add a backdrop when menu is open */
+  body.menu-open::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.2);
+    z-index: 1999;
+  }
+}
