@@ -1,0 +1,235 @@
+
+:root {
+  --accent: #4f77be;
+  --bg-sidebar: #ecf1fa;
+  --bg-light: #f5f8fe;
+  --bg-white: #ffffff;
+  --hover: #e3ecfb;
+  --text: #222;
+  --text-light: #666;
+  --border: #e0e0e0;
+}
+
+body.dark {
+  --bg-sidebar: #1a2433;
+  --accent: #85b3ff;
+  --bg-light: #111827;
+  --bg-white: #1e293b;
+  --hover: #2c3e50;
+  --text: #f3f4f6;
+  --text-light: #94a3b8;
+  --border: #334155;
+}
+
+body {
+  background: var(--bg-light);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  height: 100vh;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1000;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.toggle-btn {
+  margin-left: auto;
+  background: var(--hover);
+  color: var(--text);
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.toggle-btn:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--bg-sidebar);
+  padding: 80px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid var(--border);
+}
+
+.sidebar .nav-link {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  color: var(--text);
+  text-decoration: none;
+  display: block;
+  transition: background 0.2s;
+}
+
+.sidebar .nav-link:hover,
+.sidebar .nav-link.active {
+  background: var(--hover);
+  color: var(--accent);
+}
+
+.footer {
+  margin-top: auto;
+  font-size: 12px;
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 10px;
+}
+
+.email {
+  font-size: 13px;
+  text-align: center;
+  color: var(--text-light);
+  margin-top: 6px;
+}
+
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 80px 40px 40px;
+}
+
+.section {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.hero {
+  background: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 60px 40px;
+  text-align: center;
+  max-width: 700px;
+  margin: 60px auto 20px;
+}
+
+.hero h2 {
+  font-size: 32px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+.notification {
+  background: #fff9d9;
+  border: 1px solid #f4e6a2;
+  padding: 15px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  margin: 20px auto 30px;
+  max-width: 700px;
+  color: #554d00;
+}
+
+.card {
+  background: var(--bg-white);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  padding: 30px;
+  max-width: 800px;
+  margin: 30px auto;
+}
+
+.card h2 {
+  color: var(--accent);
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.summary {
+  font-size: 15px;
+  color: var(--text-light);
+  margin-bottom: 20px;
+}
+
+.metadata {
+  font-size: 14px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+.card p, .card ul {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.card ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.video-container {
+  margin-top: 20px;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border: none;
+}
+
+.download-button {
+  margin-top: 25px;
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: white;
+  border-radius: 6px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
+
+.download-button:hover {
+  background: #3f65a5;
+}
