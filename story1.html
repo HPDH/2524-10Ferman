@@ -26,15 +26,15 @@
 
   <div class="main">
     <div class="breadcrumb">📍 Story #1</div>
-    <div class="card">
+    <div class="card" id="story1">
       <h2>The Form</h2>
       <div class="summary">Navigating bureaucracy for a simple request.</div>
-      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~500 words</div>
+      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~160 words</div>
       <p>Amira stood in line at the Public Affairs Office, clutching Form 72C. Around her, people murmured softly, eyes fixed on the floor tiles. The walls were covered in posters: ‘Civic Unity Ensures Stability.’ She had filled out every section, double-checked each tick box, and memorised her identification number.</p>
       <p>At the window, the clerk took the form and examined it for a long moment. Amira kept her expression neutral, recalling her neighbour’s warning: ‘If you look nervous, they ask questions.’</p>
       <p>The clerk stamped the paper without a word and slid it back. Amira exhaled quietly. She would be allowed to attend her cousin’s wedding, provided she filed a Travel Permission Request before midday next Monday. It was, she thought, a small price for freedom—until she remembered the neighbour who hadn’t received approval last spring and moved away without saying goodbye.</p>
       <p>As she stepped outside, Amira glanced up at the discreet security camera on the lamppost. She smiled, just in case.</p>
-      <a class="download-button" href="data:text/plain;charset=utf-8,[Story Title One]%0AWritten by [Your Name].%0A%0A[Your story text goes here.]%0A%0AAll rights reserved. This story or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the author." download="Story1_[YourName].txt">📁 Download Story</a>
+      <a class="download-button" href="#" onclick="downloadStory('story1', 'Story1.txt', 'The Form'); return false;">📁 Download Story</a>
     </div>
   </div>
 
@@ -51,6 +51,20 @@
 
   function toggleSidebar() {
     document.body.classList.toggle('sidebar-open');
+  }
+
+  function downloadStory(containerId, filename, title) {
+    const container = document.getElementById(containerId);
+    const paragraphs = container.querySelectorAll('p');
+    const text = Array.from(paragraphs).map(p => p.textContent).join('\n\n');
+    const rights = 'All rights reserved. This story or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the author.';
+    const content = title + '\n\n' + text + '\n\n' + rights;
+    const blob = new Blob([content], {type: 'text/plain'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(link.href);
   }
 
   document.querySelectorAll('.sidebar .nav-link').forEach(link => {
