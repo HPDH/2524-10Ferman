@@ -26,16 +26,16 @@
 
   <div class="main">
     <div class="breadcrumb">📍 Story #2</div>
-    <div class="card">
+    <div class="card" id="story2">
       <h2>The Committee</h2>
       <div class="summary">Where suggestions are welcomed and ignored.</div>
-      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~480 words</div>
+      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~180 words</div>
       <p>Elias attended the monthly Residents’ Meeting as required. The agenda, projected on the wall, listed items in clear, bureaucratic language: ‘Public Space Maintenance’, ‘Community Feedback’, ‘Civic Responsibility Reminders’.</p>
       <p>Each time someone raised a suggestion, the Committee Chair smiled and noted it down. ‘We appreciate your input,’ she said, though no changes ever followed. The minutes were distributed, carefully edited, always positive.</p>
       <p>Elias once mentioned that the benches in the park were missing slats. The next morning, an official letter arrived at his door: ‘Thank you for your concern. Please refrain from direct maintenance requests. All issues must be submitted through proper channels.’</p>
       <p>Now he attended, nodded at the right moments, and said nothing. He watched others do the same, the room thick with polite agreement. Outside, the city carried on—a place where rules were followed, and those who asked too many questions found themselves gently advised to rest, or to seek relocation to a quieter district.</p>
       <p>Each meeting ended the same way: with applause, and a reminder to ‘keep communication open, for the stability of all’.</p>
-      <a class="download-button" href="data:text/plain;charset=utf-8,[Story Title Two]%0AWritten by [Your Name].%0A%0A[Your story text goes here.]%0A%0AAll rights reserved. This story or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the author." download="Story2_[YourName].txt">📁 Download Story</a>
+      <a class="download-button" href="#" onclick="downloadStory('story2', 'Story2.txt', 'The Committee'); return false;">📁 Download Story</a>
     </div>
   </div>
 
@@ -52,6 +52,20 @@
 
   function toggleSidebar() {
     document.body.classList.toggle('sidebar-open');
+  }
+
+  function downloadStory(containerId, filename, title) {
+    const container = document.getElementById(containerId);
+    const paragraphs = container.querySelectorAll('p');
+    const text = Array.from(paragraphs).map(p => p.textContent).join('\n\n');
+    const rights = 'All rights reserved. This story or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the author.';
+    const content = title + '\n\n' + text + '\n\n' + rights;
+    const blob = new Blob([content], {type: 'text/plain'});
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    link.click();
+    URL.revokeObjectURL(link.href);
   }
 
   document.querySelectorAll('.sidebar .nav-link').forEach(link => {
