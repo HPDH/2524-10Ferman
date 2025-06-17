@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flash Fiction – Story #2</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -9,6 +10,7 @@
 <body>
 
   <header>
+    <button class="menu-btn" onclick="toggleSidebar()">☰</button>
     📚 Flash Fiction by [Your Name]
     <button class="toggle-btn" onclick="toggleTheme()">🌓 Toggle Mode</button>
   </header>
@@ -43,6 +45,16 @@
     const mode = document.body.classList.contains('dark') ? 'dark' : 'light';
     localStorage.setItem('theme', mode);
   }
+
+  function toggleSidebar() {
+    document.body.classList.toggle('sidebar-open');
+  }
+
+  document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      document.body.classList.remove('sidebar-open');
+    });
+  });
 </script>
 </body>
 </html>
