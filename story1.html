@@ -30,7 +30,7 @@
     <div class="card" id="story1">
       <h2>The Form</h2>
       <div class="summary">Navigating bureaucracy for a simple request.</div>
-      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~160 words</div>
+      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~300 words</div>
       <p>Amira stood quietly in the queue at the Public Affairs Office, her grip tightening on the slightly crumpled Form 72C. The air inside the building carried a faint scent of disinfectant and something less definable—perhaps anxiety. Around her, people shifted their weight from foot to foot, voices barely above whispers. The atmosphere was heavy with anticipation. Posters lined the walls, their slogans printed in block letters: ‘Civic Unity Ensures Stability’, ‘Every Citizen, Every Duty’. Amira’s attention flickered over them, then returned to the form in her hands. She had filled in each section carefully, checked every box, and repeated her identification number in her mind like a mantra.</p>
       <p>When her turn arrived, Amira stepped forward to the counter and handed her form to the clerk. The official, a middle-aged woman with glasses perched low on her nose, studied the document in silence, eyes moving deliberately over each line. Amira kept her features calm, her neighbour’s advice echoing in her mind: ‘If you look uneasy, they notice. Then the questions begin.’ She willed her hands not to tremble.</p>
       <p>Finally, the clerk pressed a stamp onto the form and slid it back with no hint of expression. Relief washed over Amira, though she made sure not to let it show. She had received permission to attend her cousin’s wedding, on the condition that she submit a Travel Permission Request before midday the following Monday. The process felt routine, yet Amira knew from experience that approval was never guaranteed. Last spring, her neighbour had been denied permission for a similar occasion and left the block shortly afterwards, without farewell.</p>
@@ -57,14 +57,18 @@
   function downloadStory(containerId, filename, title) {
     const container = document.getElementById(containerId);
     const paragraphs = container.querySelectorAll('p');
-    const text = Array.from(paragraphs).map(p => p.textContent).join('\n\n');
+    const text = Array.from(paragraphs)
+      .map(p => p.textContent)
+      .join('\n\n');
     const rights = 'All rights reserved. This story or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the author.';
     const content = title + '\n\n' + text + '\n\n' + rights;
-    const blob = new Blob([content], {type: 'text/plain'});
+    const blob = new Blob([content], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
   }
 

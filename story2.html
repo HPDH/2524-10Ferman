@@ -30,7 +30,7 @@
     <div class="card" id="story2">
       <h2>The Committee</h2>
       <div class="summary">Where suggestions are welcomed and ignored.</div>
-      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~180 words</div>
+      <div class="metadata">📅 12/06/2025 · 🖋 Written · ~320 words</div>
       <p>Elias took his place on the hard plastic chair, its edges worn smooth by years of compulsory attendance. The monthly Residents’ Meeting always began in near silence, punctuated only by the click of the projector and the low hum of the overhead lights. The agenda appeared on the wall in bold, clinical lettering: ‘Public Space Maintenance’, ‘Community Feedback’, ‘Civic Responsibility Reminders’. Around him, neighbours sat with rigid postures, faces carefully neutral, eyes forward. Conversation was rare and hushed, as if any stray word might be overheard.</p>
       <p>As the meeting progressed, the Committee Chair presided with a fixed smile, her tone gentle but final. Each suggestion—about rubbish collection, lighting, or broken benches—was met with the same response: ‘We appreciate your input.’ She marked something in her ledger, a gesture more performative than sincere. No one expected change; the proceedings had the air of ritual, designed to signal participation rather than effect it. The minutes, circulated later, were always brief and glowing, omitting any sign of discontent.</p>
       <p>Elias recalled the minor hope he once felt when he pointed out the missing slats on the park benches. The following morning, an official letter awaited him, delivered without a sound: ‘Thank you for your concern. Please refrain from direct maintenance requests. All issues must be submitted through proper channels.’ The message was unmistakable—a gentle warning against overstepping.</p>
@@ -58,14 +58,18 @@
   function downloadStory(containerId, filename, title) {
     const container = document.getElementById(containerId);
     const paragraphs = container.querySelectorAll('p');
-    const text = Array.from(paragraphs).map(p => p.textContent).join('\n\n');
+    const text = Array.from(paragraphs)
+      .map(p => p.textContent)
+      .join('\n\n');
     const rights = 'All rights reserved. This story or any portion thereof may not be reproduced or used in any manner whatsoever without the express written permission of the author.';
     const content = title + '\n\n' + text + '\n\n' + rights;
-    const blob = new Blob([content], {type: 'text/plain'});
+    const blob = new Blob([content], { type: 'text/plain' });
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     link.download = filename;
+    document.body.appendChild(link);
     link.click();
+    document.body.removeChild(link);
     URL.revokeObjectURL(link.href);
   }
 
