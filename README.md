@@ -12,3 +12,7 @@ This repository contains a small static website built around a flash fiction pro
 ## Viewing the site
 
 Open `index.html` in your web browser to explore the stories.
+
+## Style
+
+Use British English when writing text or code comments so the project stays consistent.
